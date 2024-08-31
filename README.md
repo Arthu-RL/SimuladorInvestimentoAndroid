@@ -26,3 +26,7 @@ O projeto visa criar uma plataforma digital que simule ambientes de investimento
 ## Justificativa
 
 Este projeto busca preencher a lacuna na educação financeira entre jovens, fornecendo uma ferramenta prática e educativa. Ao desenvolver essa plataforma, espera-se contribuir para a formação de uma geração mais preparada e consciente financeiramente.
+
+## Como Contribuir
+
+Se você deseja contribuir com este projeto, por favor, consulte o [CONTRIBUTING.md](./CONTRIBUTING.md) para obter diretrizes detalhadas sobre como proceder.
