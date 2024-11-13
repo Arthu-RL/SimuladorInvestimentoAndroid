@@ -12,7 +12,7 @@ export function Simulator() {
       />
       <ScrollView>
         <View className='m-5'>
-
+          <Summary/>
         </View>
       </ScrollView>
     </View>
