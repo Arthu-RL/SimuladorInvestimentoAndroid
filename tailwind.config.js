@@ -12,7 +12,7 @@ module.exports = {
         background: '#000000',
         foreground: '#FFFFFF',
         menu: '#1C1917',
-        border: '#18181B',
+        border: '#2D2D33',
         card: '#09090B',
         muted: {
           DEFAULT: '#71717A',

@@ -16,7 +16,7 @@ export function TabIcon({name, color, focused, size, IconComponent }: IconProps)
       style={{
       backgroundColor: focused ? '#101010' : 'transparent',
       borderRadius: 100,
-      padding: focused ? 15 : 0,
+      padding: focused ? 5 : 0,
     }}>
       <IconComponent
         name={name}

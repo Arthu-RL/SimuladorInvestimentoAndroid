@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, Linking } from 'react-native'
+import { View, Alert, Linking, ScrollView } from 'react-native'
 import { Header } from '@/components/ui/Header';
 import { Button } from '../components/ui/Button'
 
@@ -20,31 +20,34 @@ export function ExternalResources() {
   return (
     <View className="flex-1 w-full bg-background">
       <Header title='Recursos Externos'/>
+      <ScrollView>
+        <View className='m-5'>
+          <Button
+            title='Tesouro Direto'
+            onPress={()=> handlePress('https://www.tesourodireto.com.br/')}
+          />
 
-      <Button
-        title='Tesouro Direto'
-        onPress={()=> handlePress('https://www.tesourodireto.com.br/')}
-      />
+          <Button
+            title='BM&FBovespa'
+            onPress={()=> handlePress('https://www.b3.com.br/')}
+          />
 
-      <Button
-        title='BM&FBovespa'
-        onPress={()=> handlePress('https://www.b3.com.br/')}
-      />
+          <Button
+            title='Banco Central'
+            onPress={()=> handlePress('https://www.bcb.gov.br/')}
+          />
 
-      <Button
-        title='Banco Central'
-        onPress={()=> handlePress('https://www.bcb.gov.br/')}
-      />
+          <Button
+            title='InfoMoney'
+            onPress={()=> handlePress('https://www.infomoney.com.br/')}
+          />
 
-      <Button
-        title='InfoMoney'
-        onPress={()=> handlePress('https://www.infomoney.com.br/')}
-      />
-
-      <Button
-        title='Valor Econômico'
-        onPress={()=> handlePress('https://valor.globo.com/')}
-      />
+          <Button
+            title='Valor Econômico'
+            onPress={()=> handlePress('https://valor.globo.com/')}
+          />
+        </View>  
+      </ScrollView>
     </View>
   )
 }
