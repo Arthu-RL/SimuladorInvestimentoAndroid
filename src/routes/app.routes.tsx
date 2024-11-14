@@ -8,7 +8,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 // import Feather from '@expo/vector-icons/Feather';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-
+import { InvestmentStack } from "./stack.routes";
 
 type AppRoutes = {
   home: undefined;
@@ -45,7 +45,7 @@ export function AppRoutes() {
 
       <Screen
         name="investments"
-        component={Investments}
+        component={InvestmentStack}
         options={{
           tabBarLabel: 'Investimentos',
           tabBarIcon: ({ focused, color }) => (
