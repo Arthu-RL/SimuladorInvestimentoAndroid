@@ -13,11 +13,14 @@ type IconProps = {
 export function TabIcon({name, color, focused, size, IconComponent }: IconProps) {
   return (
     <View        
-      style={{
-      backgroundColor: focused ? '#101010' : 'transparent',
-      borderRadius: 100,
-      padding: focused ? 5 : 0,
-    }}>
+      // style={{
+      //   flex: 1,
+      //   width: '100%',
+      //   backgroundColor: focused ? '#101010' : 'transparent',
+      //   borderRadius: 10,
+      //   padding: focused ? 5 : 0,
+      // }}
+    >
       <IconComponent
         name={name}
         size={size}
