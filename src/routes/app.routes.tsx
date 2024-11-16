@@ -1,4 +1,4 @@
-import { createBottomTabNavigator, BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator, BottomTabNavigationProp,  } from "@react-navigation/bottom-tabs";
 import { Home } from "../pages/Home";
 import { Simulator } from "../pages/Simulator";
 import { Investments } from "../pages/Investments";
@@ -27,9 +27,14 @@ export function AppRoutes() {
       screenOptions={{
         headerShown: false,
         tabBarLabelPosition: 'below-icon',
-        tabBarActiveTintColor: '#E7E5E4',
+        tabBarActiveTintColor: '#FFFFFF',
         tabBarInactiveTintColor: '#A8A29E',
-        tabBarStyle: { height: '13%', backgroundColor: '#1C1917' },
+        tabBarStyle: {  height: '10%', backgroundColor: '#1C1917' },
+        tabBarItemStyle: { paddingTop: 5 },
+        tabBarLabelStyle: {
+          marginTop: 10,
+          fontSize: 11, 
+        },
       }}
     >
       <Screen
@@ -37,9 +42,15 @@ export function AppRoutes() {
         component={Home}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({ focused, color }) => (
-            <TabIcon IconComponent={FontAwesome6} name="chart-bar" color={color} focused={focused} size={30}/>
-          ),
+          tabBarIcon: (({ focused, color }) => 
+            <TabIcon 
+              IconComponent={FontAwesome6} 
+              name="chart-bar" 
+              color={color} 
+              focused={focused} 
+              size={28}
+            />
+          )
         }}
       />
 
@@ -48,8 +59,14 @@ export function AppRoutes() {
         component={InvestmentStack}
         options={{
           tabBarLabel: 'Investimentos',
-          tabBarIcon: ({ focused, color }) => (
-            <TabIcon IconComponent={FontAwesome6} name="arrow-trend-up" color={color} focused={focused} size={30}/>
+          tabBarIcon: (({ focused, color }) => 
+            <TabIcon 
+              IconComponent={FontAwesome6} 
+              name="arrow-trend-up" 
+              color={color} 
+              focused={focused} 
+              size={28}
+            />
           ),
         }}
       />
@@ -59,8 +76,14 @@ export function AppRoutes() {
         component={Simulator}
         options={{
           tabBarLabel: 'Simulador',
-          tabBarIcon: ({ focused, color }) => (
-            <TabIcon IconComponent={MaterialIcons} name="videogame-asset" color={color} focused={focused} size={40}/>
+          tabBarIcon: (({ focused, color }) => 
+            <TabIcon 
+              IconComponent={MaterialIcons} 
+              name="videogame-asset" 
+              color={color} 
+              focused={focused} 
+              size={32}
+            />
           ),
         }}
       />
@@ -70,8 +93,14 @@ export function AppRoutes() {
         component={ExternalResources}
         options={{
           tabBarLabel: 'Recursos Externos',
-          tabBarIcon: ({ focused, color }) => (
-            <TabIcon IconComponent={FontAwesome5} name="link" color={color} focused={focused} size={30}/>
+          tabBarIcon: (({ focused, color }) => 
+            <TabIcon 
+              IconComponent={FontAwesome5} 
+              name="link" 
+              color={color} 
+              focused={focused} 
+              size={27}
+            />
           ),
         }}
       />

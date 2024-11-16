@@ -8,9 +8,9 @@ import { InvestmentFunds } from "@/pages/Investments/InvestmentFunds";
 import { Commodities } from "@/pages/Investments/Commodities";
 import { ForeignCurrencies } from "@/pages/Investments/ForeignCurrencies";
 import { Cryptocurrency } from "@/pages/Investments/Cryptocurrency";
-import { LowRisk } from "@/pages/Profiles/LowCost";
-import { ModerateRisk } from "@/pages/Profiles/MidCost";
-import { HighRisk } from "@/pages/Profiles/HighCost";
+import { LowRisk } from "@/pages/Profiles/LowRisk";
+import { ModerateRisk } from "@/pages/Profiles/MidRisk";
+import { HighRisk } from "@/pages/Profiles/HighRisk";
 
 
 export type InvestmentStackRoutes = {
