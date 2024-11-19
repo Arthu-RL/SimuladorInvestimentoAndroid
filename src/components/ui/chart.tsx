@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useMemo, forwardRef, useId } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { BarChart, LineChart, PieChart, Legend, Tooltip } from 'react-native-chart-kit';
+import { BarChart, LineChart, PieChart } from 'react-native-chart-kit';
 import { cn } from '@/lib/utils';
 
 
