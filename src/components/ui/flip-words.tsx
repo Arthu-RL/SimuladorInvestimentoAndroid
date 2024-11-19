@@ -3,7 +3,7 @@ import { Animated, Text, View } from 'react-native';
 
 export const FlipWords = ({
   words,
-  duration = 2000,
+  duration = 3000,
   className,
 }: {
   words: string[];
@@ -11,8 +11,8 @@ export const FlipWords = ({
   className?: string;
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
-  const [fadeAnim] = useState(new Animated.Value(0));
-  const [translateY] = useState(new Animated.Value(10));
+  const [fadeAnim] = useState(new Animated.Value(0)); // Animação para a opacidade
+  const [translateY] = useState(new Animated.Value(10)); // Animação para a posição Y
 
   // Função para iniciar a animação e alternar as palavras
   const startAnimation = useCallback(() => {
@@ -26,7 +26,7 @@ export const FlipWords = ({
         useNativeDriver: true,
       }),
       Animated.timing(translateY, {
-        toValue: -15,
+        toValue: -5,
         duration: 300,
         useNativeDriver: true,
       }),
@@ -75,7 +75,7 @@ export const FlipWords = ({
                 transform: [{ translateY }],
               },
             ]}
-            className="inline-block text-3xl color-white"
+            className="inline-block color-white"
           >
             {word.split('').map((letter, letterIndex) => (
               <Text key={word + letterIndex} className="inline-block">

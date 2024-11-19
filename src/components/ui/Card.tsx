@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 
 type CardPropsView = React.ComponentProps<typeof View> & {
   className?: string;
