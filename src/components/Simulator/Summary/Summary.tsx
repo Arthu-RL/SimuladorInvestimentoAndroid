@@ -5,9 +5,39 @@ import Feather from '@expo/vector-icons/Feather';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Tooltip } from '@/components/ui/Tooltip';
 import { Countdown } from './Countdown';
-
+import { Chart } from './Chart';
+import { useUserAccount } from '@/providers/userAccountProvider';
+import { getAssetVariation, calculateTotalHoldingsValue } from '@/utils/number';
+import { NumberDisplay } from './NumberDisplay';
+import { useInvestmentAssets } from '@/providers/InvestmentAssetsProvider';
 
 export function Summary() {
+  const { assets } = useInvestmentAssets();
+  const { user } = useUserAccount();
+
+  const totalAssets = user.currentWallet.reduce((total, asset) => {
+    return calculateTotalHoldingsValue(total, assets, asset);
+  }, 0);
+
+  const holdingsDifference = getAssetVariation(
+    user.walletHistory.at(-2)?.wallet.reduce((total, asset) => {
+      return calculateTotalHoldingsValue(total, assets, asset);
+    }, 0) ?? 0,
+    user.walletHistory.at(-1)?.wallet.reduce((total, asset) => {
+      return calculateTotalHoldingsValue(total, assets, asset);
+    }, 0) ?? 0,
+  );
+
+  const profitabilityDifference = getAssetVariation(
+    user.profitabilityHistory.at(-2)?.profitability ?? 0,
+    user.profitabilityHistory.at(-1)?.profitability ?? 0,
+  );
+
+  const balanceDifference = getAssetVariation(
+    user.balanceHistory.at(-2)?.balance ?? 10000,
+    user.balanceHistory.at(-1)?.balance ?? 10000,
+  );
+
   return (
     <View className="flex flex-row flex-wrap gap-5 mb-5">
       <Countdown/>
@@ -17,15 +47,9 @@ export function Summary() {
           <FontAwesome5 name="wallet" size={20} color="white"/>
         </CardHeader>
         <CardContent>
-          {/* <NumberDisplay value={totalAssets} valueDifference={holdingsDifference} animated /> */}
-          <Text className="text-4xl font-bold brightness-110 transition-all text-foreground pb-2">R$ 9.825,12</Text>
-        </CardContent>
-        <CardFooter>
-          <CardDescription>
-            -1.75% em relação ao dia anterior
-          </CardDescription>
+          <NumberDisplay value={user.currentBalance} valueDifference={balanceDifference} animated />
           <Tooltip/>
-        </CardFooter>
+        </CardContent>
       </Card>
 
       <Card id='holdings'>
@@ -34,16 +58,8 @@ export function Summary() {
           <FontAwesome5 name="coins" size={24} color="white" />
         </CardHeader>
         <CardContent>
-          {/* <NumberDisplay value={totalAssets} valueDifference={holdingsDifference} animated /> */}
-          <Text className="text-4xl font-bold brightness-110 transition-all  text-foreground pb-2">
-            R$ 48,22
-          </Text>
+          <NumberDisplay value={totalAssets} valueDifference={holdingsDifference} animated />
         </CardContent>
-        <CardFooter>
-          <CardDescription>
-            +48,22% em realação ao dia anterior
-          </CardDescription>
-        </CardFooter>
       </Card>
 
       <Card id='profitability'>
@@ -52,37 +68,14 @@ export function Summary() {
           <Feather name="dollar-sign" size={24} color="white" />
         </CardHeader>
         <CardContent>
-          {/* <NumberDisplay value={totalAssets} valueDifference={holdingsDifference} animated /> */}
-          <Text className="text-4xl font-bold brightness-110 transition-all  text-foreground pb-2">
-            R$ 0,00
-          </Text>
+        <NumberDisplay
+            value={user.currentProfitability}
+            valueDifference={profitabilityDifference}
+            animated
+          />
         </CardContent>
-        <CardFooter>
-          <CardDescription>
-            0.00% em relação ao dia anterior
-          </CardDescription>
-        </CardFooter>
       </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Rentabilidade Semanal</CardTitle>
-          <Feather name="activity" size={24} color="white" />
-        </CardHeader>
-        <CardContent>
-          <Text className="text-4xl font-bold brightness-110 transition-all  text-foreground pb-2">
-            R$ 0,00
-          </Text>
-        </CardContent>
-        <CardFooter>
-          <CardDescription>
-            Rentabilidade acumulada nesta semana
-          </CardDescription>
-        </CardFooter>
-        <View className="w-full lg:w-1/4">
-          {/* <Chart/> */}
-        </View>
-      </Card>
+      <Chart/>
     </View>
   );
 }

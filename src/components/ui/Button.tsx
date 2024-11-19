@@ -14,7 +14,7 @@ export function Button({ variant = 'texto', title, ...rest }: ButtonProps) {
         {...rest}
       >
         <Text
-          className={`text-xl font-bold ${variant === 'fim' ? 'text-card' : 'text-white'}`}
+          className={`text-2xl font-bold ${variant === 'fim' ? 'text-card' : 'text-white'}`}
         >
           {title}
         </Text>
