@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import FontAwesome5  from '@expo/vector-icons/FontAwesome5';
 import Feather from '@expo/vector-icons/Feather';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
@@ -39,43 +39,46 @@ export function Summary() {
   );
 
   return (
+      <ScrollView>
     <View className="flex flex-row flex-wrap gap-5 mb-5">
-      <Countdown/>
-      <Card id='balance'>
-        <CardHeader>
-          <CardTitle>Saldo</CardTitle>
-          <FontAwesome5 name="wallet" size={20} color="white"/>
-        </CardHeader>
-        <CardContent>
-          <NumberDisplay value={user.currentBalance} valueDifference={balanceDifference} animated />
-          <Tooltip/>
-        </CardContent>
-      </Card>
+        <Countdown/>
+        <Card id='balance'>
+          <CardHeader>
+            <CardTitle>Saldo</CardTitle>
+            <FontAwesome5 name="wallet" size={20} color="white"/>
+          </CardHeader>
+          <CardContent>
+            <NumberDisplay value={user.currentBalance} valueDifference={balanceDifference} animated />
+            <Tooltip/>
+          </CardContent>
+        </Card>
 
-      <Card id='holdings'>
-        <CardHeader>
-          <CardTitle>Patrimônio em Ativos</CardTitle>
-          <FontAwesome5 name="coins" size={24} color="white" />
-        </CardHeader>
-        <CardContent>
-          <NumberDisplay value={totalAssets} valueDifference={holdingsDifference} animated />
-        </CardContent>
-      </Card>
+        <Card id='holdings'>
+          <CardHeader>
+            <CardTitle>Patrimônio em Ativos</CardTitle>
+            <FontAwesome5 name="coins" size={24} color="white" />
+          </CardHeader>
+          <CardContent>
+            <NumberDisplay value={totalAssets} valueDifference={holdingsDifference} animated />
+          </CardContent>
+        </Card>
 
-      <Card id='profitability'>
-        <CardHeader>
-          <CardTitle>Rentabilidade Total</CardTitle>
-          <Feather name="dollar-sign" size={24} color="white" />
-        </CardHeader>
-        <CardContent>
-        <NumberDisplay
-            value={user.currentProfitability}
-            valueDifference={profitabilityDifference}
-            animated
-          />
-        </CardContent>
-      </Card>
-      <Chart/>
+        <Card id='profitability'>
+          <CardHeader>
+            <CardTitle>Rentabilidade Total</CardTitle>
+            <Feather name="dollar-sign" size={24} color="white" />
+          </CardHeader>
+          <CardContent>
+          <NumberDisplay
+              value={user.currentProfitability}
+              valueDifference={profitabilityDifference}
+              animated
+            />
+          </CardContent>
+        </Card>
+        <Chart/>
+
     </View>
+      </ScrollView>
   );
 }
