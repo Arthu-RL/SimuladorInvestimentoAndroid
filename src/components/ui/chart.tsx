@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 //     icon?: React.ComponentType;
 //   } & ({ color?: string } | { theme: Record<'light' | 'dark', string> });
 // };
-type ChartConfigItem =
+export type ChartConfigItem =
 | {
   label?: React.ReactNode;
   icon?: React.ComponentType;
@@ -25,7 +25,7 @@ type ChartConfigItem =
       config: ChartConfig;
     };
     
-type ChartConfig = Record<string, ChartConfigItem>;
+export type ChartConfig = Record<string, ChartConfigItem>;
 
 const ChartContext = createContext<ChartContextProps | null>(null);
 
@@ -56,7 +56,7 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({ config, children
 };
 
 const ChartStyle: React.FC<{ id: string; config: ChartConfig }> = ({ id, config }) => {
-  // No suporte direto a estilos dinâmicos no React Native como no DOM, ajustes podem ser feitos aqui.
+
   return null;
 };
 
